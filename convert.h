@@ -3,17 +3,7 @@
 #include <OpenMesh/Core/IO/MeshIO.hh>
 #include <map>
 #include <array>
-
 #include <fstream>
-
-template <class Point>
-struct PointHasher {
-    std::size_t operator()(const Point& k) const {
-        using std::size_t;
-        using std::hash;
-        return hash<std::string>()((std::string)k);
-    }
-};
 
 template <class Tri, class Mesh>
 void triangulation_to_mesh(const Tri& tri, Mesh& mesh) {
