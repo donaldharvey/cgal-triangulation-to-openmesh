@@ -3,7 +3,6 @@
 #include <OpenMesh/Core/IO/MeshIO.hh>
 #include <map>
 #include <array>
-//#include <OpenMesh/Core/Mesh/>
 
 #include <fstream>
 
@@ -39,13 +38,11 @@ void triangulation_to_mesh(const Tri& tri, Mesh& mesh) {
             v = *(it->vertex(i));
             PointArray key = {v.point().x(), v.point().y()};
             if (points_map.count(key) == 0) {
-                //std::cout << "Not found, adding " << key << "\n";
                 p = MeshPoint(key[0], key[1], 0);
                 p_h = mesh.add_vertex(p);
                 points_map[key] = p_h;
             }
             else {
-                //std::cout << "Found " << key << "\n";
                 p_h = points_map[key]; 
             }
             face_vhandles.push_back(p_h);
